@@ -58,7 +58,7 @@ export const getAllProducts = (name) => {
         });
       })
       .catch((error) => {
-        toast.error(error.response.data.message);
+        console.error(error);
       });
   };
 };
@@ -76,7 +76,7 @@ export const getAllProductsByBrands = (brand) => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -96,7 +96,7 @@ export function getProductById(payload) {
           });
         });
     } catch (error) {
-      alert(error.details.data.message);
+      console.log(error);
     }
   };
 }
@@ -175,7 +175,7 @@ export const getAllBrands = () => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -191,7 +191,7 @@ export const getAllSizes = () => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -339,7 +339,7 @@ export const combineStateCart = (payload) => {
         payload: []
       });
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.error(error);
     }
   };
 };
@@ -438,7 +438,6 @@ export const placeOrder = (payload) => {
       url: `${process.env.REACT_APP_API_URL}/orders/create`,
       data: payload,
     });
-    // toast(response.data.message)
     if (response.data.message === "Stock is not enough.") {
       setTimeout(() => {
         window.location.href = '/cart'
